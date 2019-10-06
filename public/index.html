@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="/styles.css" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+</head>
+<body>
+	<h1 class="title">Item Thingy</h1>
+	<div id="homepage">
+		<h1>New Items close by!</h1>
+		<div id="items"></div>
+	</div>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script src="https://unpkg.com/react@15/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+	<!-- <script type="text/babel">
+		var Items = React.createClass({
+			getInitialState:()=>{
+				return ({
+					items:[]
+				})
+			},
+			render:()=>{
+				// console.log(items);
+				var items = state.items;
+				items = items.map((item,index)=>{
+					return(
+						<li key={index}>
+							<span className={item.validated}></span>
+							<span className="username">{item.username}</span>
+							<span className="email">{item.email}</span>
+							<span className="dist">{Math.floor(item.dis/1000)}</span>
+						</li>
+					)
+				});
+				return(
+					<div id="item-container">
+						<form id="search" onSubmit={this.handleSubmit}>
+							<label>Enter Latitude</label>
+							<input type="text" ref="lat" placeholder="latitude" required/>
+							
+							<label>Enter Longitude</label>
+							<input type="text" ref="lng" placeholder="longitude" required/>
+							<input type="submit" value="SEARCH"/>
+							<ul>{items}</ul>
+						</form>
+					</div>
+				)
+			},
+			handleSubmit:(e)=>{
+				e.preventDefault();
+				var lng = this.refs.lng.value;
+				var lat = this.refs.lat.value;
+				fetch(`/api/items?lng=${lng}&lat=${lat}`)
+				.then((data)=>{
+					return data.json();
+				}).then((json)=>{
+					this.setState({
+						items:json
+					});
+				});
+			}
+		});
+
+
+		ReactDOM.render(<Items />,document.getElementById('items'));
+	</script> -->
+	<script type="text/babel">
+        var Items = React.createClass({
+            getInitialState: function(){
+                return({
+                    items: []
+                });
+            },
+            render: function(){
+                var items = this.state.items;
+                items = items.map(function(item, index){
+                    return(
+                        <li key={index}>
+                            <span className={item.validated}></span>
+                            <span className="name">{item.name}</span>
+                            <span className="rank">{item.email}</span>
+                            <span className="dist">{Math.floor(item.dis / 1000)} km</span>
+                        </li>
+                    );
+                });
+                return(
+                    <div id="item-container">
+                        <form id="search" onSubmit={this.handleSubmit}>
+                            <label>Enter your Latitude:</label>
+                            <input type="text" ref="lat" placeholder="latitude" required />
+                            <label>Enter your Longitude:</label>
+                            <input type="text" ref="lng" placeholder="longitude" required />
+                            <input type="submit" value="Find Ninjas" />
+                        </form>
+                        <ul>{items}</ul>
+                    </div>
+                );
+            },
+            handleSubmit: function(e){
+                e.preventDefault();
+                var lng = this.refs.lng.value;
+                var lat = this.refs.lat.value;
+                fetch('/api/items?lng=' + lng + '&lat=' + lat).then(function(data){
+                    return data.json();
+                }).then( json => {
+                    this.setState({
+                        items: json
+                    });
+                    console.log(json);
+                });
+            }
+        });
+        ReactDOM.render(<Items />, document.getElementById('items'));
+        </script>
+
+</body>

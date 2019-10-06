@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/itemdb', {
 });
 
 mongoose.Promise = global.Promise;
-
+app.use(express.static('public'))
 app.use(bodyParser.json());
 
 app.use('/api', require("./routes/api"));
