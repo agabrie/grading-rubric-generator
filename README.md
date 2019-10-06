@@ -1,5 +1,5 @@
 # MERN
-Learning how to create an API and website using a MERN(MongoDB, Express, React and Node.js) stack
+Learning how to create an API and website using a <abbr title="(MongoDB, Express, React and Node.js)">[MERN]</abbr>(https://blog.hyperiondev.com/index.php/2018/09/10/everything-need-know-mern-stack) stack
 
 ## MongoDB
 Database used for API
