@@ -5,8 +5,10 @@ const mongoose = require('mongoose');
 const app = express();
 
 var port = process.env.port || 4000;
-
-mongoose.connect('mongodb://localhost/itemdb', {
+var username = "agabrie"
+var password = "admin123"
+var url = `mongodb+srv://${username}:${password}@itemtest-cyj0i.mongodb.net/test?retryWrites=true&w=majority` || 'mongodb://localhost/itemdb'
+mongoose.connect(url, {
 	useFindAndModify: false,
 	useNewUrlParser: true,
 	useUnifiedTopology: true
@@ -21,7 +23,9 @@ app.use((err, req,res, next)=>{
 	console.log(err);
 	res.status(422).send({error:err});
 });
-
+app.get('/public',(res)=>{
+	res.sendFile(path.join(__dirname+"/index.html"));
+})
 // listen for requests
 app.listen(port,()=>{
 	console.log("now listening on port: "+port);
