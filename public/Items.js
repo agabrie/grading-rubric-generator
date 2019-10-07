@@ -1,6 +1,10 @@
-const React = require("react");
-const ReactDom = require("react-dom");
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-class Item extends ReactDom.Component({
+class Item extends React.Component {
+  render() {
+    return <h1>Hello World!</h1>;
+  }
+}
 
-})
+ReactDOM.render(<Item />, document.getElementById('items'));
