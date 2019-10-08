@@ -5,9 +5,11 @@ const mongoose = require('mongoose');
 const app = express();
 
 var port = process.env.PORT || 4000;
-var username = "agabrie"
-var password = "admin123"
-var url = `mongodb+srv://${username}:${password}@itemtest-cyj0i.mongodb.net/test?retryWrites=true&w=majority` || 'mongodb://localhost/itemdb'
+// var username = "agabrie"
+// var password = "admin123"
+var dbusername = process.env.dbusername
+var dbpassword = process.env.dbpassword
+var url = `mongodb+srv://${dbusername}:${dbpassword}@itemtest-cyj0i.mongodb.net/test?retryWrites=true&w=majority` || 'mongodb://localhost/itemdb'
 mongoose.connect(url, {
 	useFindAndModify: false,
 	useNewUrlParser: true,
