@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // setup express app
 const app = express();
 
-var port = process.env.port || 4000;
+var port = process.env.PORT || 4000;
 var username = "agabrie"
 var password = "admin123"
 var url = `mongodb+srv://${username}:${password}@itemtest-cyj0i.mongodb.net/test?retryWrites=true&w=majority` || 'mongodb://localhost/itemdb'
