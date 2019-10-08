@@ -23,6 +23,9 @@ app.use((err, req,res, next)=>{
 	console.log(err);
 	res.status(422).send({error:err});
 });
+app.get('/',(req,res)=>{
+	res.redirect('/public')
+})
 app.get('/public',(res)=>{
 	res.sendFile(path.join(__dirname+"/index.html"));
 })
