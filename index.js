@@ -11,7 +11,8 @@ var url = `mongodb+srv://${username}:${password}@itemtest-cyj0i.mongodb.net/test
 mongoose.connect(url, {
 	useFindAndModify: false,
 	useNewUrlParser: true,
-	useUnifiedTopology: true
+	useUnifiedTopology: true,
+	useCreateIndex: true
 });
 
 mongoose.Promise = global.Promise;
