@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Item = require("../models/items");
+const Item = require("../models/items").Item;
+const Project = require("../models/items").Project;
+
 
 // get things from db
 router.get('/items',(req, res, next)=>{
@@ -21,6 +23,13 @@ router.get('/items',(req, res, next)=>{
 	})
 });
 
+router.get('/projects',(req,res,next)=>{
+	Project.find()
+	.then((projects)=>{
+		res.send(projects);
+	})
+});
+
 // add new item to db
 router.post('/items',(req, res,next)=>{
 	// console.log(req.body);
@@ -31,6 +40,20 @@ router.post('/items',(req, res,next)=>{
 		res.send({
 			type : "POST",
 			item : item
+		});
+	})
+	.catch(next);
+});
+
+router.post('/projects',(req, res,next)=>{
+	// console.log(req.body);
+	// var item= new item(req.body);
+	// Ninja.save();
+	Project.create(req.body)
+	.then((project)=>{
+		res.send({
+			type : "POST",
+			project : project
 		});
 	})
 	.catch(next);
