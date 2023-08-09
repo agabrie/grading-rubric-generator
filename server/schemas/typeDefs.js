@@ -24,22 +24,18 @@ const typeDefs = `
     type CriterionOption{
         text:String
         value:Int
-        feedback:String
+        feedback:[Feedback]
     }
 
     type feedback{
         _id:ID
-        rubric:Rubric
         text:String
+        Feedbacktype:feedbacktype
     }
-    type Grade{
+
+    type feedbacktype{
         _id:ID
-        range:Range
-        grade:String
-    }
-    type Range{
-        min:Float
-        max:Float
+        type:String
     }
     type Query{
         project: Project

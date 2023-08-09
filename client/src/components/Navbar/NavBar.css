@@ -1,0 +1,31 @@
+.nav-bar{
+    height:100px;
+    box-sizing: border-box;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links{
+    height: 100%;
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+}
+.site-home{
+    background-color: rgb(70, 70, 185);
+    color: white;
+}
+.nav-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+.nav-link:hover{
+    background-color: black;
+    color: white;
+}

@@ -1,0 +1,25 @@
+.add-section-container{
+    box-sizing: border-box;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    border-radius: 5px;
+    position: relative;
+}
+
+.section-title{
+    border: none;
+    font-size: 2rem;
+}
+.section-title:focus-visible{
+    outline: none;
+}
+
+.delete-section{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
