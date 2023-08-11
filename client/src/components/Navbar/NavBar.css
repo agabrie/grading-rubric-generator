@@ -14,7 +14,20 @@
     justify-content: flex-end;
 }
 .site-home{
-    background-color: rgb(70, 70, 185);
+    background-color: var(--main-color);
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    transition: var(--transition);
+}
+.site-home:hover{
+    background-color: var(--main-color-hover);
+}
+.site-name{
     color: white;
 }
 .nav-link{
