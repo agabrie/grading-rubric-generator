@@ -2,23 +2,24 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addCriterion,
   updateCriterion,
-  updateTotalWeighting,
+  // updateTotalWeighting,
 } from "../../features/rubric/rubricSlice";
 
 import AddCriterion from "./AddCriterion";
+import DeleteButton from "../../components/DeleteButton/DeleteButton";
 
 function AddSection({ section, deleteSection, saveSection, totalWeighting }) {
 //   const totalWeighting = useSelector((state) => state.rubric.totalWeighting);
   const dispatch = useDispatch();
-  const inputHandler = (e) => {
+  const inputHandler = async (e) => {
     let updatedSectionData = {
       ...section,
       [e.target.name]: isNaN(e.target.value)
         ? e.target.value
         : parseInt(e.target.value),
     };
-    dispatch(updateTotalWeighting())
-    saveSection(updatedSectionData);
+    await saveSection(updatedSectionData);
+    // dispatch(updateTotalWeighting())
   };
   const addCriterionHandler = () => {
     console.log(section.criteria);
@@ -48,12 +49,13 @@ function AddSection({ section, deleteSection, saveSection, totalWeighting }) {
   return (
     <>
       <div className="add-section-container">
-        <button
+        {/* <button
           className="delete-section"
           onClick={() => deleteSection(section.id)}
         >
           X
-        </button>
+        </button> */}
+        <DeleteButton onClick={()=>deleteSection(section.id)} />
         <div className="section-details">
           <input
             className="section-title"
@@ -71,9 +73,11 @@ function AddSection({ section, deleteSection, saveSection, totalWeighting }) {
             value={section.weight}
           />
         </div>
-        {section.weight}/{totalWeighting}
-        <br />
+        {/* {section.weight}/{totalWeighting} */}
+        {/* <br /> */}
         {(section.weight / totalWeighting)*100}%
+        <br />
+        {section.contribution}
         {section.criteria &&
           section.criteria.map((criterion, index) => {
             return (

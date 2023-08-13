@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
 import { addOption, updateOption } from "../../features/rubric/rubricSlice";
+import DeleteButton from "../../components/DeleteButton/DeleteButton";
 const criterionTypes = [
   { type: "radio", text: "Radio" },
   { type: "dropdown", text: "Dropdown" },
   { type: "slider", text: "Slider" },
+  { type: "checklist", text: "checklist" },
 ];
 function SelectType({ criterion, inputHandler }) {
   const handleSelection = (e) => {
@@ -97,9 +99,15 @@ function AddCriterion({ sectionId, criterion, updateCriterion }) {
     );
     // section.criteria.push(newCriterion);
   };
+  const deleteCriterion=(criterionId)=>{
+    console.log(criterionId)
+    dispatch(removeCriterion({sectionId, criterionId}))
+  }
   return (
     <div className="criterion-container">
       {criterion.contribution}
+      <DeleteButton size="small" onClick={()=>deleteCriterion(criterion.id)} />
+
       <input
         className="criterion-name"
         name="name"

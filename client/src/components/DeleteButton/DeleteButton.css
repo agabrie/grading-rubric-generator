@@ -1,0 +1,22 @@
+.delete-btn{
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    padding: 0;
+    width: 2rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: var(--transition);
+}
+.delete-btn:hover{
+    background-color: rgba(255, 255, 255, 25%);
+}
+.small-btn{
+    right: 0em;
+    top: 0rem;
+    font-size: 0.75rem;
+    /* transform: scale(0.5); */
+    width: 1.5rem;
+
+}
